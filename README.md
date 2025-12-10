@@ -53,4 +53,70 @@ Desde Colombia, aprendiendo, practicando y mejorando cada día.
 _"Cada línea que escribo es una versión mejor de mí mismo."_
 
 ---
+classDiagram
+    %% CLASES PRINCIPALES
+    class Cliente {
+        📝 Datos del cliente
+        ---
+        id
+        nombre
+        telefono
+        direccion
+    }
+
+    class ItemCatalogo {
+        🛍️ Productos
+        ---
+        id
+        nombre
+        precio
+        stock
+    }
+
+    class Orden {
+        📦 Pedido
+        ---
+        id
+        fecha
+        estado
+        ---
+        getTotal()
+    }
+
+    class DetalleOrden {
+        📋 Línea de pedido
+        ---
+        cantidad
+        ---
+        getSubtotal()
+    }
+
+    class EstadoOrden {
+        <<estado>>
+        ---
+        PENDIENTE
+        EN_PROCESO
+        ENVIADA
+        ENTREGADA
+        CANCELADA
+    }
+
+    class DistrisoftService {
+        🎯 GESTOR PRINCIPAL
+        ---
+        Gestiona clientes
+        Gestiona productos
+        Gestiona órdenes
+        Guarda todo en archivos
+    }
+
+    %% RELACIONES
+    Cliente "1" -- "*" Orden : realiza
+    Orden "*" -- "1" EstadoOrden : tiene un
+    Orden "1" *-- "*" DetalleOrden : contiene
+    DetalleOrden "*" -- "1" ItemCatalogo : producto
+    
+    DistrisoftService ..> Cliente : administra
+    DistrisoftService ..> ItemCatalogo : administra
+    DistrisoftService ..> Orden : administra
 
