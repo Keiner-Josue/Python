@@ -53,7 +53,4 @@ Desde Colombia, aprendiendo, practicando y mejorando cada día.
 _"Cada línea que escribo es una versión mejor de mí mismo."_
 
 ---
-<div align="center">
-  <img src="./diagrama-uml.png" alt="Diagrama UML" width="800"/>
-</div>
 
